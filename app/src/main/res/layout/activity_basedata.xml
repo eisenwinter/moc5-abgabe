@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/distance_small">
+    <TextView
+        android:layout_width="match_parent"
+        style="@style/Base.TextAppearance.AppCompat.Headline"
+        android:layout_height="wrap_content"
+        android:id="@+id/baseDataLabelTextView"
+        android:text="Base Data"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameEditText"
+            android:hint="@string/hint_canteen_name"
+            android:inputType="textAutoComplete" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addressEditText"
+            android:hint="@string/hint_address"
+            android:inputType="textPostalAddress" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Switch
+        android:id="@+id/toggleMapSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/find_address_on_map"
+        />
+
+    <fragment
+        android:id="@+id/mapGoogleMap"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/canteen_details_map_height"
+        android:layout_marginTop="@dimen/distance_small" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_small">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/websiteEditText"
+            android:hint="@string/hint_website"
+            android:inputType="textUri"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_small">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/phoneEditText"
+            android:hint="@string/hint_phone"
+            android:inputType="phone"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_thickness"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:layout_width="match_parent"
+        style="@style/Base.TextAppearance.AppCompat.Headline"
+        android:layout_height="wrap_content"
+        android:id="@+id/waitingTimeLabelTextView"
+        android:text="Waiting Time"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/waitingTimeTextView"
+        android:text="00"
+        android:textAlignment="center"/>
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/WaitingTimeSeekBar"
+        android:layout_marginTop="@dimen/distance_small"
+        android:min="1"
+        android:max="60"
+        android:progress="1"
+        android:paddingTop="@dimen/distance_small"/>
+</LinearLayout>

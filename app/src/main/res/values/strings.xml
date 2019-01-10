@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Canteen Manager</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_user">User</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="filekey">com.example.canteenchecker.key</string>
+    <string name="error_invalid_username">Please enter a valid user name!</string>
+    <string name="error_no_password">Please enter your password!</string>
+    <string name="info_retriving_data">Retriving data from server</string>
+    <string name="info_service">Please wait</string>
+    <string name="error_network">Network Connecvitiy Issues, please retry!</string>
+    <string name="error_invalid_credentials">Invalid login credentials!</string>
+    <string name="error_canteen_deleted">Canteen was not found, logging out...</string>
+    <string name="edit_your_canteen_name">Your canteen name!</string>
+    <string name="misc_is_beeind_loaded">Is beeind loaded...</string>
+    <string name="label_current_meal_of_the_day">Current Meal of the Day</string>
+    <string name="label_ratings">Ratings</string>
+    <string name="label_canteen">Canteen</string>
+    <string name="button_edit">Edit</string>
+    <string name="hint_website">Website...</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_address">Address</string>
+    <string name="hint_canteen_name">Canteen Name</string>
+    <string name="toast_empty_canteen_name">Please check your data, the canteen name may not be empty!</string>
+    <string name="error_connection">Something went wrong, please try again later!</string>
+    <string name="meal_name">Meal Name</string>
+    <string name="hint_meal_price">Meal Price</string>
+    <string name="find_address_on_map">Find address on map</string>
+    <string name="error_no_address_found">Could not find address for location!</string>
+    <string name="button_delete">Delete!</string>
+    <string name="modal_message">You are about to remove a rating, this may upset some users. Are you sure?</string>
+    <string name="title_are_you_sure">Are you sure?</string>
+    <string name="toast_deleted">Deleted!</string>
+    <string name="toast_couldntdelete">Could not delete rating!</string>
+</resources>
