@@ -13,14 +13,14 @@
     <string name="info_service">Please wait</string>
     <string name="error_network">Network Connecvitiy Issues, please retry!</string>
     <string name="error_invalid_credentials">Invalid login credentials!</string>
-    <string name="error_canteen_deleted">Canteen was not found, logging out...</string>
+    <string name="error_canteen_deleted">Canteen was not found, logging out…</string>
     <string name="edit_your_canteen_name">Your canteen name!</string>
-    <string name="misc_is_beeind_loaded">Is beeind loaded...</string>
+    <string name="misc_is_beeind_loaded">Is beeing loaded…</string>
     <string name="label_current_meal_of_the_day">Current Meal of the Day</string>
     <string name="label_ratings">Ratings</string>
     <string name="label_canteen">Canteen</string>
     <string name="button_edit">Edit</string>
-    <string name="hint_website">Website...</string>
+    <string name="hint_website">Website</string>
     <string name="hint_phone">Phone</string>
     <string name="hint_address">Address</string>
     <string name="hint_canteen_name">Canteen Name</string>
@@ -31,8 +31,9 @@
     <string name="find_address_on_map">Find address on map</string>
     <string name="error_no_address_found">Could not find address for location!</string>
     <string name="button_delete">Delete!</string>
-    <string name="modal_message">You are about to remove a rating, this may upset some users. Are you sure?</string>
+    <string name="modal_message">You are about to remove a rating, this may upset some users.</string>
     <string name="title_are_you_sure">Are you sure?</string>
     <string name="toast_deleted">Deleted!</string>
     <string name="toast_couldntdelete">Could not delete rating!</string>
+    <string name="filler_by">by</string>
 </resources>

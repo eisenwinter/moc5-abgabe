@@ -55,6 +55,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.canteenchecker.canteenmanager.ui.MainActivity" />
         </activity>
+
+        <service android:name=".infrastructure.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

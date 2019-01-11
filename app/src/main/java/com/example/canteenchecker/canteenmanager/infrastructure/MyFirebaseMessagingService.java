@@ -10,8 +10,6 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.Map;
 
 public class MyFirebaseMessagingService  extends FirebaseMessagingService {
-    private static final String TAG = MyFirebaseMessagingService.class.getName();
-
     private static final String REMOTE_MESSAGE_TYPE_KEY = "type";
     private static final String REMOTE_MESSAGE_TYPE_VALUE = "canteenDataChanged";
 

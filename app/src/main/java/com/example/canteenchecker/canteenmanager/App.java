@@ -6,6 +6,8 @@ import android.content.Context;
 
 
 import com.example.canteenchecker.canteenmanager.di.DaggerAppComponent;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import javax.inject.Inject;
 import dagger.android.AndroidInjector;
@@ -14,6 +16,7 @@ import dagger.android.HasActivityInjector;
 
 public class App extends Application implements HasActivityInjector {
 
+    private static final String FIREBASE_MESSAGING_TOPIC = "canteens";
 
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
@@ -22,6 +25,9 @@ public class App extends Application implements HasActivityInjector {
     public void onCreate() {
         super.onCreate();
         DaggerAppComponent.builder().application(this).build().inject(this);
+
+        FirebaseApp.initializeApp(this);
+        FirebaseMessaging.getInstance().subscribeToTopic(FIREBASE_MESSAGING_TOPIC);
 
     }
 

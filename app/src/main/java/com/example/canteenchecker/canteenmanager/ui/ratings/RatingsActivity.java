@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,17 +38,23 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import dagger.android.AndroidInjection;
 
 public class RatingsActivity extends AppCompatActivity {
     @Inject
     ViewModelProvider.Factory viewModelFactory;
+
+    @BindView(R.id.ratingsRecyclerView)
+    RecyclerView recyclerView;
 
     private ProgressDialog progressDialog;
     private RatingsViewModel _viewModel;
@@ -55,7 +63,6 @@ public class RatingsActivity extends AppCompatActivity {
     private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Toast.makeText(context, "New Rating Received!", Toast.LENGTH_SHORT).show();
             initialize();
         }
     };
@@ -69,8 +76,11 @@ public class RatingsActivity extends AppCompatActivity {
         _viewModel = ViewModelProviders.of(this, viewModelFactory).get(RatingsViewModel.class);
         progressDialog = ProgressDialog.show(this, getString(R.string.info_service), getString(R.string.info_retriving_data));
         progressDialog.hide();
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(ratingAdapter);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, MyFirebaseMessagingService.updatedRatingsMessage());
+        initialize();
     }
 
     private void initialize(){
@@ -134,7 +144,7 @@ public class RatingsActivity extends AppCompatActivity {
             holder.userNameTextView.setText(current.getUsername());
             holder.ratingRatingBar.setRating(current.getRatingPoints());
             Date date = new Date(current.getTimestamp());
-            holder.createdTextView.setText(new SimpleDateFormat("dd-MM-yyyy, HH:mm").format((date)));
+            holder.createdTextView.setText(new SimpleDateFormat("dd.MM.yyyy, HH:mm").format((date)));
             holder.deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -151,6 +161,7 @@ public class RatingsActivity extends AppCompatActivity {
                                         if(aBoolean != null && aBoolean){
                                             that.ratings.remove(current);
                                             notifyDataSetChanged();
+
                                             Toast.makeText(RatingsActivity.this, R.string.toast_deleted, Toast.LENGTH_SHORT).show();
                                         }else{
                                             Toast.makeText(RatingsActivity.this,R.string.toast_couldntdelete, Toast.LENGTH_SHORT).show();
@@ -170,10 +181,17 @@ public class RatingsActivity extends AppCompatActivity {
 
         }
 
-        public void setRatings(Collection<RatingModel> ratings) {
+        public void setRatings(Collection<RatingModel> incoming) {
+
             ratings.clear();
-            if (ratings != null) {
-                ratings.addAll(ratings);
+            if(incoming != null){
+                ratings.addAll(incoming);
+                Collections.sort(ratings, new Comparator<RatingModel>() {
+                    @Override
+                    public int compare(RatingModel o1, RatingModel o2) {
+                        return o2.getTimestamp().compareTo(o1.getTimestamp());
+                    }
+                });
             }
             notifyDataSetChanged();
         }
